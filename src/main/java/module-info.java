@@ -4,6 +4,7 @@ module com.example.flightdashboard {
 
     requires com.dlsc.formsfx;
 
-    opens com.example.flightdashboard to javafx.fxml;
+    opens com.example.flightdashboard.ui to javafx.fxml;
+
     exports com.example.flightdashboard;
 }
