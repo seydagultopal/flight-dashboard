@@ -2,7 +2,6 @@ package com.example.flightdashboard.ui;
 
 import com.example.flightdashboard.service.FlightData;
 import com.example.flightdashboard.service.FlightDataListener;
-import com.example.flightdashboard.simulation.DummyFlightData;
 import com.example.flightdashboard.simulation.FlightDataSimulator;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -40,4 +39,5 @@ public class DashboardView implements FlightDataListener {
             fuelBar.setProgress(data.getFuel());
         });
     }
+
 }
