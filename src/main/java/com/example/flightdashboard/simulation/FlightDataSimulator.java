@@ -8,6 +8,7 @@ import  java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import com.example.flightdashboard.data.FlightDataRepository;
 
 public class FlightDataSimulator{
 
@@ -32,8 +33,9 @@ public class FlightDataSimulator{
                     random.nextDouble() * 900,
                     random.nextDouble()
             );
-
+            FlightDataRepository.getInstance().setFlightData(this.flightData);
             for (FlightDataListener listener : listeners) {
+
                 listener.onFlightDataUpdate(this.flightData);
             }
         }, 0, 1, TimeUnit.SECONDS);
