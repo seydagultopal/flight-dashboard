@@ -9,6 +9,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
+import javafx.scene.layout.VBox;
 
 public class DashboardView implements FlightDataListener {
     @FXML
@@ -23,12 +24,42 @@ public class DashboardView implements FlightDataListener {
     private FlightDataSimulator simulator;
 
     @FXML
+    private void onStartSimulation() {
+        simulator.start();
+    }
+
+    @FXML
+    private void onStopSimulation() {
+        simulator.stop();
+    }
+
+    @FXML
+    private void onEmergencyLanding() {
+        FlightData data = new FlightData(
+                500.0, // Düşük irtifa
+                200.0, // Düşük hız
+                FlightDataRepository.getInstance().getFlightData().getFuel()
+        );
+        FlightDataRepository.getInstance().setFlightData(data);
+        onFlightDataUpdate(data);
+    }
+
+    @FXML
+    private void onShutDownEngine() {
+        FlightData data = new FlightData(
+                0.0, // Sıfır irtifa
+                0.0, // Sıfır hız
+                FlightDataRepository.getInstance().getFlightData().getFuel()
+        );
+        FlightDataRepository.getInstance().setFlightData(data);
+        onFlightDataUpdate(data);
+    }
+
+    @FXML
     private void initialize() {
         altitudeSlider.setValue(0);
         speedSlider.setValue(0);
         fuelBar.setProgress(0);
-
-        // Repository'den mevcut veriyi al
         FlightData data = FlightDataRepository.getInstance().getFlightData();
         if (data != null) {
             altitudeSlider.setValue(data.getAltitude());

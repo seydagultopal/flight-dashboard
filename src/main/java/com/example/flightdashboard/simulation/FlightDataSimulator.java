@@ -46,5 +46,11 @@ public class FlightDataSimulator{
         listeners.add(listener);
     }
 
+    public void stop() {
+        if (scheduler != null && !scheduler.isShutdown()) {
+            scheduler.shutdown();
+        }
+    }
+
 
 }
