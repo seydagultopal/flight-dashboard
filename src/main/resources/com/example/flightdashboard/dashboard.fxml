@@ -11,10 +11,10 @@
    <Button fx:id="stopButton" mnemonicParsing="false" onAction="#onStopSimulation" text="Stop Simulation" />
    <Button fx:id="emergencyButton" mnemonicParsing="false" onAction="#onEmergencyLanding" text="Emergency Landing" />
    <Button fx:id="shutdownButton" mnemonicParsing="false" onAction="#onShutDownEngine" text="Shut Down Engine" />
-   <Label text="İrtifa" />
+   <Label text="Altitude" />
    <Slider fx:id="altitudeSlider" prefWidth="300" />
-   <Label text="Hız" />
+   <Label text="Speed" />
    <Slider fx:id="speedSlider" prefWidth="300" />
-   <Label text="Yakıt" />
+   <Label text="Fuel" />
    <ProgressBar fx:id="fuelBar" prefWidth="300" />
 </VBox>
